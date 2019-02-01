@@ -6,8 +6,8 @@ export default class TelaResultado extends Component {
         const personagem = this.props.navigation.getParam('dados',[]);
         return(
             <Container>
-                <Header>
-                    <Title>{personagem.name}</Title>
+                <Header style={{backgroundColor:'#2E2E2E'}}>
+                    <Title style={{paddingTop:15, fontSize:25, fontWeight: 'bold'}}>{personagem.name}</Title>
                 </Header>
                 <Content>
                     <DadosPessoais dados={personagem}/>                    

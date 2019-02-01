@@ -1,20 +1,14 @@
 import React,{Component} from 'react';
 import {Header, Title, Container, Content} from 'native-base';
+import { ImageBackground } from 'react-native';
 
-
-import DadosPessoais from '../components/DadosPessoais';
-import Acessar from '../components/AcessoSWAPI';
-import listaResultado from '../components/ListaResultado';
 import ListaResultado from '../components/ListaResultado';
+const fundo = require('../imgs/fundo2.2.png');
 
 export default class TelaResultado extends Component {
     constructor(props){
         super(props);
         this.state = {listaResultado: []};
-      
-    }
-    resultadoPersonagem(nome){
-
     }
     componentWillMount(){
         const resultado = this.props.navigation.getParam('resultado',[])
@@ -25,15 +19,29 @@ export default class TelaResultado extends Component {
         const {navigate} = this.props.navigation
         return(
             <Container>
-                <Header>
-                    <Title>Resultado</Title>
+                <Header style={{backgroundColor:'#2E2E2E'}}>
+                    <Title style={Estilos.txtTitulo}>Resultado</Title>
                 </Header>
-                <Content>
-                    {this.state.listaResultado.map( personagem =>
-                            <ListaResultado key={personagem.name} dados={personagem} navigate={navigate}/>                    
-                         )}
-                </Content>
+                    <ImageBackground source={fundo} style={Estilos.imgFundo}>
+                        <Content>
+                            {this.state.listaResultado.map( personagem =>
+                                <ListaResultado key={personagem.name} dados={personagem} navigate={navigate}/>                    
+                            )}
+                        </Content>
+                    </ImageBackground>
             </Container>
         );
+    }
+}
+
+const Estilos = {
+    txtTitulo:{
+        fontSize:25,
+        fontWeight:'bold',
+        paddingTop:10
+    },
+    imgFundo:{
+        width:360,
+        height: 560
     }
 }

@@ -11,17 +11,11 @@ export default class TelaBusca extends Component {
     }
     buscaPersonagem(nome){
         Axios.get('https://swapi.co/api/people/?search='+nome)
-        .then(
-                response => {
+        .then(response => {
                 this.props.navigation.navigate('Resultado', {resultado: response.data.results});    
             }
         )
-        .catch(
-            err =>
-            { 
-                console.log("Erro ao carregar informação");
-            }
-        )
+        .catch(err =>{console.log("Erro ao carregar informação");})
     }
     render(){
         return(
@@ -66,7 +60,7 @@ const Estilos = {
         borderColor: 'transparent'
       },
     txtBtn:{
-        color: "#DF0101",
+        color: "yellow",
         fontSize: 25, 
         fontWeight: 'bold'
     },
