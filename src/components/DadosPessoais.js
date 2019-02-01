@@ -16,7 +16,6 @@ export default class DadosPessoais extends Component {
     render(){
         return(
             <View>
-                <Text style={Estilos.txtInfo}>Name: {this.props.dados.name}</Text>
                 <Text style={Estilos.txtInfo}>Height: {this.props.dados.height}</Text>
                 <Text style={Estilos.txtInfo}>Mass: {this.props.dados.mass}</Text>
                 <Text style={Estilos.txtInfo}>Hair color: {this.props.dados.hair_color}</Text>

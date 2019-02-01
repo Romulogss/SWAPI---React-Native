@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {View, Text, TextInput, ImageBackground, TouchableOpacity, StatusBar} from 'react-native';
-import {Header, Title} from 'native-base'
+import {Header, Title, Container} from 'native-base'
 import Axios from 'axios';
 const fundo = require('../imgs/fundo2.png');
 
@@ -11,12 +11,21 @@ export default class TelaBusca extends Component {
     }
     buscaPersonagem(nome){
         Axios.get('https://swapi.co/api/people/?search='+nome)
-        .then(response => this.setState({infoPersonagem: response.data}))
-        .catch(() => console.log("Erro ao carregar informação"))
+        .then(
+                response => {
+                this.props.navigation.navigate('Resultado', {resultado: response.data.results});    
+            }
+        )
+        .catch(
+            err =>
+            { 
+                console.log("Erro ao carregar informação");
+            }
+        )
     }
     render(){
         return(
-            <View style={{backgroundColor:'#fff'}}>
+            <Container style={{backgroundColor:'#fff'}}>
                 <StatusBar
                     backgroundColor="#2E2E2E"
                 />
@@ -33,15 +42,14 @@ export default class TelaBusca extends Component {
                         <TouchableOpacity 
                             style={Estilos.botao}
                             onPress={() => {
-                                this.buscaPersonagem(this.state.nome);
-                                this.props.navigation.navigate('Resultado', {resultado: this.state.infoPersonagem})    
+                                this.buscaPersonagem(this.state.nome);    
                             }}
                         >
                             <Text style={Estilos.txtBtn}>Buscar</Text>
                         </TouchableOpacity>
                     </View>
                 </ImageBackground>
-            </View>
+            </Container>
         );
     }
 }
