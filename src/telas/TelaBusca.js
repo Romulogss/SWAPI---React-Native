@@ -7,12 +7,13 @@ const fundo = require('../imgs/fundo2.png');
 export default class TelaBusca extends Component {
     constructor(props){
         super(props);
-        this.state = {infoPersonagem: [], nome: ''}
+        this.state = { nome: ''}
     }
     buscaPersonagem(nome){
         Axios.get('https://swapi.co/api/people/?search='+nome)
         .then(response => {
-                this.props.navigation.navigate('Resultado', {resultado: response.data.results});    
+                this.props.navigation.navigate('Resultado', {resultado: response.data.results}); 
+                console.log(response)   
             }
         )
         .catch(err =>{console.log("Erro ao carregar informação");})
@@ -21,7 +22,7 @@ export default class TelaBusca extends Component {
         return(
             <Container style={{backgroundColor:'#fff'}}>
                 <StatusBar
-                    backgroundColor="#2E2E2E"
+                    backgroundColor={"#2E2E2E"}
                 />
                 <Header style={{backgroundColor: '#2E2E2E'}}>
                     <Title style={{color:'yellow', paddingTop: 15, fontWeight: 'bold'}}>SWAPI - RN</Title>

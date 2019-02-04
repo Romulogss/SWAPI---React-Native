@@ -13,7 +13,6 @@ export default class TelaResultado extends Component {
     componentWillMount(){
         const resultado = this.props.navigation.getParam('resultado',[])
         this.setState({listaResultado: resultado})
-        console.log(resultado)
     }
     render(){
         const {navigate} = this.props.navigation
@@ -38,7 +37,8 @@ const Estilos = {
     txtTitulo:{
         fontSize:25,
         fontWeight:'bold',
-        paddingTop:10
+        paddingTop:10,
+        color: 'yellow'
     },
     imgFundo:{
         width:360,

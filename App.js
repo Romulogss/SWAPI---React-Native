@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import TelaBusca from './src/telas/TelaBusca';
 import TelaResultado from './src/telas/TelaResultado';
 import TelaDetalhes from './src/telas/TelaPersonagem';
+import OurAcordion from './src/components/Acordion';
 import { createStackNavigator } from 'react-navigation';
 
 export default class App extends Component {
@@ -15,6 +16,7 @@ export default class App extends Component {
 
 const Rotas = createStackNavigator(
   {
+    
     Busca:{
       screen: TelaBusca,
       
@@ -24,6 +26,9 @@ const Rotas = createStackNavigator(
     },
     Detalhes:{
       screen: TelaDetalhes
+    },
+    Teste:{
+      screen: OurAcordion
     }
   },{
     navigationOptions:{
